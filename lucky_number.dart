@@ -32,7 +32,6 @@ void luckynumber() {
   print("The lucky number range is 1 to 5 and if you want to quit type exit");
   while (true) {
     stdout.write('Enter your Lucky number : ');
-    //int? number = int.parse(stdin.readLineSync()!);
     String? input = stdin.readLineSync();
     if (input == 'exit') {
       print('Game Over! Final score : ' + score.toString());
