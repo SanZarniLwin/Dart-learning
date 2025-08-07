@@ -38,8 +38,12 @@ void luckynumber() {
       print('Game Over! Final score : ' + score.toString());
       break;
     }
-    int? number = int.parse(input!);
-    var rdm = Random();
+    int? number = int.tryParse(input!);
+    if (number == null || number < 1 || number > 5) {
+      print('Invalid input. Please enter a number from 1 to 5.');
+      continue;
+  }
+    final rdm = Random();
     int lucky = rdm.nextInt(5) + 1;
     print('the lucky number is : ' + lucky.toString());
 
