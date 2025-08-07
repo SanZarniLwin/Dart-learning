@@ -35,34 +35,42 @@ You lose! Paper beats rock.
 */
 import 'dart:math';
 import 'dart:io';
-void main(){
-    game();
+
+void main() {
+  game();
 }
-void game(){
-    print('');
-    print('This is Rock, Paper, Scissor game.\n');
-    while (true){
-        stdout.write('Enter Rock, Paper, or Scissors (or \'exit\' to quit): ');
-        String? player = stdin.readLineSync();
-        if (player == 'exit'){
-            print('Well played.See u');
-            break;
-        }
-        var rng = Random();
-        List<String> options = ['Rock','Paper','Scissors'];
-        String? computer = options[rng.nextInt(options.length)];
-        print('The computer chooses : '+computer);
-        if (player == computer){
-            print('It\'s draw.\n');
-        } else if (
-            (player == 'Rock' && computer == 'Scissors') ||
-            (player == 'Paper' && computer == 'Rock') ||
-            (player == 'Scissors' && computer == 'Paper') 
-        ){
-            print('You win the Game! '+(player ?? '')+' beats '+(computer ?? '')+'.\n');
-        } else {
-            print('Computer wins the Game! '+(computer ?? '')+' beats '+(player ?? '')+'.\n');
-        }
+
+void game() {
+  print('');
+  print('This is Rock, Paper, Scissor game.\n');
+  while (true) {
+    stdout.write('Enter Rock, Paper, or Scissors (or \'exit\' to quit): ');
+    String? player = stdin.readLineSync();
+    if (player == 'exit') {
+      print('Well played.See u');
+      break;
     }
-    
+    var rng = Random();
+    List<String> options = ['Rock', 'Paper', 'Scissors'];
+    String? computer = options[rng.nextInt(options.length)];
+    print('The computer chooses : ' + computer);
+    if (player == computer) {
+      print('It\'s draw.\n');
+    } else if ((player == 'Rock' && computer == 'Scissors') ||
+        (player == 'Paper' && computer == 'Rock') ||
+        (player == 'Scissors' && computer == 'Paper')) {
+      print('You win the Game! ' +
+          (player ?? '') +
+          ' beats ' +
+          (computer ?? '') +
+          '.\n');
+    } else {
+      print('Computer wins the Game! ' +
+          (computer ?? '') +
+          ' beats ' +
+          (player ?? '') +
+          '.\n');
+    }
+  }
 }
+// You need to account for inputs other than Rock, Paper, Scissors from the player. Right now, you can input anything and it will show the computer beats that.

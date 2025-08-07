@@ -29,7 +29,6 @@ Diana scores 93 and get Grade A.
 
 */
 
-
 void main() {
   List<Map<String, dynamic>> students = [
     {'name': 'Alice', 'score': 85},
@@ -37,16 +36,16 @@ void main() {
     {'name': 'Charlie', 'score': 59},
     {'name': 'Diana', 'score': 93},
   ];
-  students.forEach((student){
+  students.forEach((student) {
     String name = student['name'] as String;
     int score = student['score'] as int;
-    printStudentGrade(name,score);
+    printStudentGrade(name, score);
   });
 }
 
-void printStudentGrade(String name,int score){
+void printStudentGrade(String name, int score) {
   var grade = getGrade(score);
-  print(name+' scores '+score.toString()+' and get Grade '+grade);
+  print(name + ' scores ' + score.toString() + ' and get Grade ' + grade);
 }
 
 String getGrade(int score) {
@@ -62,3 +61,4 @@ String getGrade(int score) {
     return 'F';
   }
 }
+// Not much to say, can use switch statements and can make variables immutable, redundant type assignment with as in students forEach function. 
