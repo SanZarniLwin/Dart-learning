@@ -13,16 +13,17 @@ void main() {
 }
 
 calculate({int numberA = 0, int numberB = 0, String operator = ''}) {
-  if (operator == '+') {
-    return (numberA + numberB);
-  } else if (operator == '-') {
-    return (numberA - numberB);
-  } else if (operator == '*') {
-    return (numberA * numberB);
-  } else if (operator == '/') {
-    return (numberA / numberB);
-  } else {
-    return ('Invalid operator');
+  switch (operator) {
+    case '+':
+      return numberA + numberB;
+    case '-':
+      return numberA - numberB;
+    case '*':
+      return numberA * numberB;
+    case '/':
+      return numberA / numberB;
+    default:
+      return 'Invalid operator';
   }
 }
 //REVIEW AND FEEDBACK

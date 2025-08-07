@@ -37,28 +37,30 @@ void main() {
     {'name': 'Diana', 'score': 93},
   ];
   students.forEach((student) {
-    String name = student['name'] as String;
-    int score = student['score'] as int;
+    final String name = student['name'];
+    final int score = student['score'];
     printStudentGrade(name, score);
   });
 }
 
 void printStudentGrade(String name, int score) {
-  var grade = getGrade(score);
-  print(name + ' scores ' + score.toString() + ' and get Grade ' + grade);
+    final grade = getGrade(score);
+  print(name + ' scores ' + score.toString() + ' and get Grade ' + grade.toString() + '.');
 }
 
 String getGrade(int score) {
-  if (score >= 90) {
-    return 'A';
-  } else if (score >= 80 && score <= 89) {
-    return 'B';
-  } else if (score >= 70 && score <= 79) {
-    return 'C';
-  } else if (score >= 60 && score <= 69) {
-    return 'D';
-  } else {
-    return 'F';
+  switch (score ~/ 10) {
+    case 10:
+    case 9:
+      return 'A';
+    case 8:
+      return 'B';
+    case 7:
+      return 'C';
+    case 6:
+      return 'D';
+    default:
+      return 'F';
   }
 }
 // Not much to say, can use switch statements and can make variables immutable, redundant type assignment with as in students forEach function. 
