@@ -1,0 +1,148 @@
+/*Pizza Topping Chooser
+Problem Statement:
+
+Write a Dart console program that allows the user to build a custom pizza by selecting toppings 
+from a given menu. The user can choose multiple toppings, but only one pizza is allowed per run. 
+The program calculates and displays the total price based on the base pizza price and selected toppings.
+
+📝 Requirements:
+Base pizza price is $5.
+
+Available toppings (with prices):
+{
+  'Cheese': 1.5,
+  'Pepperoni': 2.0,
+  'Mushrooms': 1.0,
+  'Olives': 1.0,
+  'Onions': 0.75,
+  'Bacon': 2.5
+}
+Ask the user to enter toppings one by one. Each time:
+
+Show the current total.
+
+Stop when user types done.
+
+If user enters a topping not on the list, show a warning and skip it.
+
+After finishing, display:
+
+The list of selected toppings.
+
+Base price + topping prices.
+
+Total cost.
+
+Only one pizza allowed per user (i.e., don’t loop for another order).
+
+💡 Sample Console Interaction:
+Welcome to Dart Pizza!
+
+Base pizza price: $5.00
+Available toppings:
+- Cheese: $1.5
+- Pepperoni: $2.0
+- Mushrooms: $1.0
+- Olives: $1.0
+- Onions: $0.75
+- Bacon: $2.5
+
+Enter a topping to add (type 'done' to finish): Cheese
+Cheese added. Current total: $6.50
+
+Enter a topping to add (type 'done' to finish): Pineapple
+Sorry, we don't have Pineapple.
+
+Enter a topping to add (type 'done' to finish): Bacon
+Bacon added. Current total: $9.00
+
+Enter a topping to add (type 'done' to finish): done
+
+--- Order Summary ---
+Base Pizza: $5.00
+Toppings:
+- Cheese: $1.50
+- Bacon: $2.50
+Total Price: $9.00
+Thanks for ordering!
+*/
+import 'dart:io';
+
+void main() {
+  orderingPizza();
+}
+
+void orderingPizza() {
+  print('');
+  print('Welcome to Dart Pizza!\n');
+
+  print('Base pizza price: \$5.00');
+  print('Available toppings:');
+  print('- Cheese: \$1.5');
+  print('- Pepperoni: \$2.0');
+  print('- Mushrooms: \$1.0');
+  print('- Olives: \$1.0');
+  print('- Onions: \$0.75');
+  print('- Bacon: \$2.5\n');
+
+  double pizzaPrice = 5.00;
+  List<String> addedToppingList = [];
+  while (true) {
+    stdout.write('Enter a topping to add (type \'done\' to finish): ');
+    String? input = stdin.readLineSync();
+    if (input == 'Cheese') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 1.5 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Cheese: \$1.50');
+    } else if (input == 'Pepperoni') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 2.0 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Pepperoni: \$1.50');
+    } else if (input == 'Mushrooms') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 1.0 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Mushrooms: \$1.50');
+    } else if (input == 'Olives') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 1.0 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Olives: \$1.50');
+    } else if (input == 'Onions') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 0.75 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Onions: \$1.50');
+    } else if (input == 'Bacon') {
+      print((input ?? 'Unknown') +
+          ' added. Current total: \$' +
+          (pizzaPrice = 2.5 + pizzaPrice).toString() +
+          '\n');
+      addedToppingList.add('Bacon: \$1.50');
+    } else if (input == 'done') {
+      print('');
+      print('--- Order Summary ---');
+      print('Base Pizza: \$5.00');
+      print('Toppings:');
+      for (var topping in addedToppingList) {
+        print('-' + topping);
+      }
+      print('Total Price: \$' + pizzaPrice.toString());
+      print('Thanks for ordering!');
+      break;
+    } else {
+      print('Sorry, we don\'t have ' + (input ?? 'Unknown') + '.\n');
+    }
+  }
+}
+
+// Don't name dart variable starting with capital letters. Pizzaprice should be pizzaPrice. please check out https://dart.dev/effective-dart/style
+// Same with functions, dart files,
+// you can also try to be more clear about naming variables, for example toppingsAdded can be addedTopingList so that you know it is a list. ( suggestions )
